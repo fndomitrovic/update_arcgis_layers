@@ -1,5 +1,9 @@
 # update_arcgis_layers
 
+## About:
+The code in this repository was used to create a regional bike infrastructure map that could be easily updated with the latest data. The scripts used in this project aimed to solve two issues with manually downloading open source data:
+1. hi
+
 ## How to use each function:
 
 ```python
