@@ -53,4 +53,56 @@ cb_to_features(path)
   - location: ArcGIS Project geodatabase
  
 ## Building an Overpass API query
-Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data. Overpass QL is built around OSM's tag system for feature representation. Each OSM feature is described by key-value pairs, called tags. Essentially, a key is like a column name and a value like a cell value in a table. Over
+Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data.  Overpass QL is built around OSM's tag system for feature representation. Each OSM feature is described by key-value pairs, called tags. Essentially, a key is like a column name and a value like a cell value in a table. Some features can be identified with many different tags and some have fewer or one tag that can query the desired features. 
+
+For example, below is the query used to retrieve local bike lanes from Trenton, NJ, to Hartford, CT:
+```python
+bike_lanes = """
+[out:json];
+(
+  way["bicycle"="designated"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:left"="lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:left"="separate"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:left"="track"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:left"="shared_busway"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:left"="shared_lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:right"="lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:right"="separate"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:right"="track"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:right"="shared_busway"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:right"="shared_lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:both"="lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:both"="separate"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:both"="track"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:both"="shared_busway"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:both"="shared_lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway"="lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway"="track"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway"="opposite_track"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway"="share_busway"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway"="shared_lane"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["highway"="cycleway"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["highway"="footway"]["bicycle"="yes"]["footway"!="crossing"]["footway"!="sidewalk"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["highway"="path"]["bicycle"="yes"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:left"="shared_lanec"](40.2115, -75.0517, 41.7968, -72.6750);
+  way["cycleway:right"="shared_lanec"](40.2115, -75.0517, 41.7968, -72.6750);
+);
+out body;
+>;
+out skel qt;
+"""
+```
+In this query, 26 different tags can retrieve bike lane infrastructure - protected bike lanes, conventional bike lanes, and signed shared bicycle & vehicle lanes.  
+  
+In contrast, regional cycle routes can be queried with only one group of tags:
+```python
+regional_routes = """
+[out:json];
+(
+  relation["type"="route"]["network"="rcn"](37.21306, -80.38999, 44.40282, -68.19693);
+);
+out body;
+>;
+out skel qt;
+"""
+```
