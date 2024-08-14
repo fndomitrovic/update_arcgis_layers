@@ -17,21 +17,14 @@ You can browse OSM data on its website, and query and download OSM data through 
 Citi Bike publishes updating, real-time datasets including dock locations and bike availability. This data can also be accessed through an API endpoint. However, no query is necessary as there are separate API endpoints specifically for dock locations, bike avilability, etc. 
 
 ## Setup:
-This code was run in an ArcGIS notebook inside of a desktop ArcGIS Pro application. 
+This code was run in an ArcGIS notebook inside of a desktop ArcGIS Pro application. You can create an ArcGIS notebook by clicking on the Insert tab in an ArcGIS Project, then clicking "New Notebook."
+To run the following two functions, you will have to first import the following libraries/modules:
+```python
+import arcpy, os, json, requests
+```
+
 
 ## How to use each function:
-
-```python
-cb_to_features(path)
-```
-#### Creates a layer of updating CitiBike dock locations
-#### Input: 
-- path = folder path to save CitiBike JSON data to (string)
-#### Output: 
-- JSON file of most recent CitiBike docks in GeoJSON format
-  - location: input folder path
-- ArcGIS feature class & layer of most recent CitiBike docks
-  - location: ArcGIS Project geodatabase
 
 ```python
 osm_to_features(path, query, file_name)
@@ -46,3 +39,18 @@ osm_to_features(path, query, file_name)
   - location: input folder path
 - ArcGIS feature class & layer of Open Street Map data
   - location: ArcGIS Project geodatabase
+
+```python
+cb_to_features(path)
+```
+#### Creates a layer of updating CitiBike dock locations
+#### Input: 
+- path = folder path to save CitiBike JSON data to (string)
+#### Output: 
+- JSON file of most recent CitiBike docks in GeoJSON format
+  - location: input folder path
+- ArcGIS feature class & layer of most recent CitiBike docks
+  - location: ArcGIS Project geodatabase
+ 
+## Building an Overpass API query
+Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data. Overpass QL is built around OSM's tag system for feature representation. Each OSM feature is described by key-value pairs, called tags. Essentially, a key is like a column name and a value like a cell value in a table. Over
