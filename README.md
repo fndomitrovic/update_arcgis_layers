@@ -53,7 +53,14 @@ cb_to_features(path)
   - location: ArcGIS Project geodatabase
  
 ## Building an Overpass API query
-Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data.  Overpass QL is built around OSM's tag system for feature representation. Each OSM feature is described by key-value pairs, called tags. Essentially, a key is like a column name and a value like a cell value in a table. Some features can be identified with many different tags and some have fewer or one tag that can query the desired features. 
+Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data.  
+
+Each line of the core of an Overpass QL has three components:
+1. data type
+2. tag(s)
+3. geography
+
+Overpass QL is built around OSM's tag system for feature representation. Each OSM feature is described by key-value pairs, called tags. Essentially, a key is like a column name and a value like a cell value in a table. Some features can be identified with many different tags and some have fewer or one tag that can query the desired features. 
 
 For example, below is the query used to retrieve local bike lanes from Trenton, NJ, to Hartford, CT:
 ```python
