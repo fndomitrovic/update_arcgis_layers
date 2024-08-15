@@ -1,6 +1,9 @@
 # update_arcgis_layers
 
-[TOC]
+## Contents:
+1. [About](About)
+2. [Data sources] (#Data sources:)
+3. Setup
 
 ## About:
 The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike dock layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources Sharepoint page.
