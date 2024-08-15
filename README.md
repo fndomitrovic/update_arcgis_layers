@@ -53,7 +53,9 @@ cb_to_features(path)
   - location: ArcGIS Project geodatabase
  
 ## Building an Open Street Map Overpass API query
-Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data. For this project, I used ChatGPT to help build the query with the correct Overpass API syntax. 
+Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data. For this project, I used ChatGPT to help build the query with the correct Overpass API syntax.   
+
+Overpass API also has a web interface, Overpass Turbo. From Overpass Turbo, you can view and edit queries without having to go through the ArcGIS Python script. 
 
 Each line of the core of an Overpass QL has three components:
 1. data type
@@ -123,4 +125,4 @@ ChatGPT can be a useful tool to figure out what different features are tagged as
 #### 3. Geography
 There are several ways to query for location. For this project, the query used a bounding box with four coordinates of the corners of the bounding box. It's also possible to query by location name.
 
-Overpass API has a web interface, Overpass Turbo. From Overpass Turbo, you can view and edit queries without having to go through the ArcGIS Python script. 
+ 
