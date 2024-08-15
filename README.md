@@ -158,7 +158,10 @@ There are several ways to query for location. For this project, the query used a
 ## Updating the PANYNJ Regional Bike Map layers
 The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. 
 The following is the workflow to update the layers on the PANYNJ Regional Bike Map Web App:
-1. In a desktop ArcGIS Pro application, log in to the PANYNJ ArcGIS online portal
+
+In a desktop ArcGIS Pro application:
+1. Log in to the PANYNJ ArcGIS online portal
    - must log in to an account with editing priveleges for the layer, I used Leo Tsang's account to originally upload and update the layers
 2. In an ArcGIS notebook, run all needed scripts (name of script in Github repo) to update the layers
-3. To update the bike lanes layer
+3. To update the bike lanes layer, right click on the 'bikelanes_customfields' layer in the Contents pane, then click 'Overwrite Web Layer'
+4. 
