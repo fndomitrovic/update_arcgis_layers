@@ -1,9 +1,12 @@
 # update_arcgis_layers
 
-## Contents:
-1. [About](About)
-2. [Data sources] (#Data sources:)
+Contents:
+1. About
+2. Data sources
 3. Setup
+4. How to use each function
+5. Building an Open Street Map Overpass API query
+6. Updating the PANYNJ Regional Bike Map layers
 
 ## About:
 The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike dock layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources Sharepoint page.
@@ -153,4 +156,9 @@ ChatGPT can be a useful tool to figure out what different features are tagged as
 There are several ways to query for location. For this project, the query used a bounding box with four coordinates of the corners of the bounding box. It's also possible to query by location name.
 
 ## Updating the PANYNJ Regional Bike Map layers
- 
+The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. 
+The following is the workflow to update the layers on the PANYNJ Regional Bike Map Web App:
+1. In a desktop ArcGIS Pro application, log in to the PANYNJ ArcGIS online portal
+   - must log in to an account with editing priveleges for the layer, I used Leo Tsang's account to originally upload and update the layers
+2. In an ArcGIS notebook, run all needed scripts (name of script in Github repo) to update the layers
+3. To update the bike lanes layer
