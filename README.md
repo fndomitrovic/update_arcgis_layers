@@ -164,4 +164,6 @@ In a desktop ArcGIS Pro application:
    - must log in to an account with editing priveleges for the layer, I used Leo Tsang's account to originally upload and update the layers
 2. In an ArcGIS notebook, run all needed scripts (name of script in Github repo) to update the layers
 3. To update the bike lanes layer, right click on the 'bikelanes_customfields' layer in the Contents pane, then click 'Overwrite Web Layer'
-4. 
+4. A pop up window of files uploaded on the ArcGIS Online PA Portal will appear - navigate to the 'Bike lanes - Flora' folder and click on the 'Bike lanes' feature layer.
+5. Click run
+6. To repeat for the Citi Bike docks layer, repeat steps 3-5, but navigate to 'Overwrite Web Layer' from the 'citibike_stations' layer and overwrite the 'CitiBike Docks' ArcGIS Online layer on the PA Portal
