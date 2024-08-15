@@ -52,17 +52,22 @@ cb_to_features(path)
 - ArcGIS feature class & layer of most recent CitiBike docks
   - location: ArcGIS Project geodatabase
  
-## Building an Overpass API query
-Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data.  
+## Building an Open Street Map Overpass API query
+Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data. For this project, I used ChatGPT to help build the query with the correct Overpass API syntax. 
 
 Each line of the core of an Overpass QL has three components:
 1. data type
 2. tag(s)
 3. geography
 
-Overpass QL is built around OSM's tag system for feature representation. Each OSM feature is described by key-value pairs, called tags. Essentially, a key is like a column name and a value like a cell value in a table. Some features can be identified with many different tags and some have fewer or one tag that can query the desired features. 
+#### 1. Data Type
+The three data types in Open Street Map are nodes, ways, and relations. Nodes represent points, ways represent lines, and relations represent multiple nodes and/or ways. 
 
-For example, below is the query used to retrieve local bike lanes from Trenton, NJ, to Hartford, CT:
+#### 2. Tag(s)
+OSM features are identified & described by a tag system. Each tag is a key value pair, such as "bicycle=designated", where the key functions like a column name and the value like a cell value. There are more than 3,000 keys alone used on Open Street Map, and you can find their associated information on OSM's Taginfo site.
+
+
+Some features, such as local bike lanes, can have many identifying tags. For example, below is the query used to retrieve local bike lanes from Trenton, NJ, to Hartford, CT:
 ```python
 bike_lanes = """
 [out:json];
@@ -113,3 +118,9 @@ out body;
 out skel qt;
 """
 ```
+ChatGPT can be a useful tool to figure out what different features are tagged as. Every OSM feature will also have a list of its tags when selected on the Open Street Map website.
+
+#### 3. Geography
+There are several ways to query for location. For this project, the query used a bounding box with four coordinates of the corners of the bounding box. It's also possible to query by location name.
+
+Overpass API has a web interface, Overpass Turbo. From Overpass Turbo, you can view and edit queries without having to go through the ArcGIS Python script. 
