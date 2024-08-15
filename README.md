@@ -52,7 +52,7 @@ standardize_fields(path, output_name, fields)
 Because of OSM's crowdsourced nature, every feature as a different set of tags. When creating an ArcGIS layer from OSM data, in order to create a uniform attribute table, ArcGIS gives every feature the keys as the first feature in the OSM dataset. If a feature doesn't have a given key, its value is null in the attribute table. Because of this, many tags are lost in the dataset, if the key does not appear in the first feature. This function allows a user to provide a list of keys to be included in the a new layer's attribute table. This step was necessary for this project in order to symbolize bike lanes by their tags.
 
 #### Input:
-- input_path = path to JSON file created by osm_to_features() function (string)
+- path = path to JSON file created by osm_to_features() function (string)
 - output_name = name of output ArcGIS layer (string)
 - fields = list of keys to be included as fields in the output layer (list)
 
