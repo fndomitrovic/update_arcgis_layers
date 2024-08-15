@@ -31,7 +31,10 @@ import arcpy, os, json, requests
 ```python
 osm_to_features(path, query, file_name)
 ```
-#### Creates a layer of any Open Street Map data. This project used the function to retrieve bike lanes and regional bike routes, but by changing the query this function can retrieve any data from Open Street Map.
+#### Creates a layer of any Open Street Map data. 
+
+This project used the function to retrieve bike lanes and regional bike routes, but by changing the query this function can retrieve any data from Open Street Map.
+
 #### Input:
 - path = folder path to save Open Street Map JSON data to (string)
 - query = Overpass Query Langauge, one of Open Street Map's API's query languages, query* (string)
@@ -40,6 +43,23 @@ osm_to_features(path, query, file_name)
 - JSON file of queried Open Street Map data in GeoJSON format
   - location: input folder path
 - ArcGIS feature class & layer of Open Street Map data
+  - location: ArcGIS Project geodatabase
+ 
+```python
+standardize_fields(path, output_name, fields)
+```
+#### Creates a new layer of OSM features with custom attributes
+Because of OSM's crowdsourced nature, every feature as a different set of tags. When creating an ArcGIS layer from OSM data, in order to create a uniform attribute table, ArcGIS gives every feature the keys as the first feature in the OSM dataset. If a feature doesn't have a given key, its value is null in the attribute table. Because of this, many tags are lost in the dataset, if the key does not appear in the first feature. This function allows a user to provide a list of keys to be included in the a new layer's attribute table. This step was necessary for this project in order to symbolize bike lanes by their tags.
+
+#### Input:
+- input_path = path to JSON file created by osm_to_features() function (string)
+- output_name = name of output ArcGIS layer (string)
+- fields = list of keys to be included as fields in the output layer (list)
+
+#### Output:
+- JSON file of OSM data with standardized tags
+  - location: input path folder
+- ArcGIS feature class & layer of input OSM data with input keys as the fields in the layer attribute table
   - location: ArcGIS Project geodatabase
 
 ```python
