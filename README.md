@@ -1,7 +1,9 @@
 # update_arcgis_layers
 
 ## About:
-The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. The Python scripts used in this project aimed to solve two issues with creating map layers by downloading open source data:
+The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike dock layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources Sharepoint page.
+
+The Python scripts used in this project aimed to solve two issues with creating map layers by downloading open source data:
 1. Needing to repeatedly download data for the layer to reflect recent changes
 2. Infrequent updates to the source data
 
@@ -9,11 +11,11 @@ As a solution used to these problems, this project accessed bike lane data from 
 
 ## Data sources:
 ### 1. Open Street Map: bike lanes
-Open Street Map (OSM), according to their wiki, is a "free, editable map of the entire world that is being built by volunteers." It is a crowdsourced map with unlimited kinds of features. Open Street Map was an ideal source for bike lane data because it is continuously being updated by cyclists. In additon, with OSM's global scale it was possible to create a regional, as opposed to local, bike infrastructure map.  
+Open Street Map (OSM), according to the OSM [Wiki](https://wiki.openstreetmap.org/wiki/Main_Page), is a "free, editable map of the entire world that is being built by volunteers." It is a crowdsourced map with unlimited kinds of features. Open Street Map was an ideal source for bike lane data because it is continuously being updated by cyclists. In additon, with OSM's global scale it was possible to create a regional, as opposed to local, bike infrastructure map.  
   
 You can browse OSM data on its website, and query and download OSM data through its Overpass API. OSM's Overpass API has a web interface, "Overpass Turbo", where you can build and view queries and download data. Alternatively, this project accessed OSM data using Overpass API's endpoint, a link to access an API through code. With this API endpoint, you can pass a query that will retrieve data from Open Street Map into the Python script, and eventually into an ArcGIS layer.
 
-### 2. Citi Bike System Data
+### 2. Citi Bike System Data: Citi Bike docks
 Citi Bike publishes updating, real-time datasets including dock locations and bike availability. This data can also be accessed through an API endpoint. However, no query is necessary as there are separate API endpoints specifically for dock locations, bike avilability, etc. 
 
 ## Setup:
@@ -29,7 +31,7 @@ import arcpy, os, json, requests
 ```python
 osm_to_features(path, query, file_name)
 ```
-#### Creates a layer of any Open Street Map data
+#### Creates a layer of any Open Street Map data. This project used the function to retrieve bike lanes and regional bike routes, but by changing the query this function can retrieve any data from Open Street Map.
 #### Input:
 - path = folder path to save Open Street Map JSON data to (string)
 - query = Overpass Query Langauge, one of Open Street Map's API's query languages, query* (string)
@@ -43,7 +45,7 @@ osm_to_features(path, query, file_name)
 ```python
 cb_to_features(path)
 ```
-#### Creates a layer of updating CitiBike dock locations
+#### Creates a layer of updating CitiBike dock locations.
 #### Input: 
 - path = folder path to save CitiBike JSON data to (string)
 #### Output: 
@@ -55,7 +57,7 @@ cb_to_features(path)
 ## Building an Open Street Map Overpass API query
 Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data. For this project, I used ChatGPT to help build the query with the correct Overpass API syntax.   
 
-Overpass API also has a web interface, Overpass Turbo. From Overpass Turbo, you can view and edit queries without having to go through the ArcGIS Python script. 
+From Overpass API's web interface, Overpass Turbo, you can view and edit queries without having to go through the ArcGIS Python script. 
 
 Each line of the core of an Overpass QL has three components:
 1. data type
@@ -125,4 +127,5 @@ ChatGPT can be a useful tool to figure out what different features are tagged as
 #### 3. Geography
 There are several ways to query for location. For this project, the query used a bounding box with four coordinates of the corners of the bounding box. It's also possible to query by location name.
 
+## Updating the PANYNJ Regional Bike Map layers
  
