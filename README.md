@@ -1,6 +1,6 @@
 # update_arcgis_layers
 
-The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike dock layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources [Sharepoint page](https://panynj.sharepoint.com/sites/PRD/SitePages/Bicycle%20Planning.aspx). This repository documents the functions used to create updating layers of regional bike lane data from Open Street Map and Citi Bike station locations, as well as how to update the PANYNJ Regional Bike Map.       
+The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike station layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources [Sharepoint page](https://panynj.sharepoint.com/sites/PRD/SitePages/Bicycle%20Planning.aspx). This repository documents the functions used to create updating layers of regional bike lane data from Open Street Map and Citi Bike station locations, as well as how to update the PANYNJ Regional Bike Map.       
 <br />
 
 ## Contents:
