@@ -8,7 +8,7 @@ The code in this repository was used to create an ArcGIS regional bike infrastru
 2. [Data sources](#data-sources)
 3. [Setup](#setup)
 4. [How to use each function in functions.py](#how-to-use-each-function-in-[functions.py](functions.py))
-5. [How to build an Open Street Map Overpass API query](#building-an-open-street-map-overpass-api-query)
+5. [How to build an Open Street Map Overpass API query](#how-to-an-open-street-map-overpass-api-query)
 6. [Updating the PANYNJ Regional Bike Map layers](#updating-the-PANYNJ-regional-bike-map)
 <br />
 
@@ -109,7 +109,7 @@ cb_to_features(path)
   - location: ArcGIS Project geodatabase
 <br />
 
-## Building an Open Street Map Overpass API query
+## How to build an Open Street Map Overpass API query
 Open Street Map's Overpass API has its own internal query language, Overpass QL, to query and retrieve OSM data. 
 
 Each line of the core of an Overpass QL has three components:
