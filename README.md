@@ -1,17 +1,18 @@
 # update_arcgis_layers
 
+The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike dock layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources Sharepoint page. This repository documents the functions used to create updating layers of regional bike lane data from Open Street Map and Citi Bike station locations.
+
 Contents:
-1. [About](#about)
+1. [Project background](#project-background)
 2. [Data sources](#data-sources)
 3. [Setup](#setup)
-4. [How to use each function](#how-to-use-each-function)
+4. [How to use each function in functions.py](#how-to-use-each-function-in-functions.py:)
 5. [Building an Open Street Map Overpass API query](#building-an-open-street-map-overpass-api-query)
 6. [Updating the PANYNJ Regional Bike Map layers](#updating-the-PANYNJ-regional-bike-map-layers)
 
-## About:
-The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike dock layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources Sharepoint page.
+## Project background:
 
-The Python scripts used in this project aimed to solve two issues with creating map layers by downloading open source data:
+The Python scripts used in this project aimed to solve two issues with creating map layers from downloaded open source data (e.g. downloading a shapefile from NYC Open Data & creating a layer from the shapefile through the ArcGIS interface):
 1. Needing to repeatedly download data for the layer to reflect recent changes
 2. Infrequent updates to the source data
 
@@ -34,7 +35,7 @@ import arcpy, os, json, requests
 ```
 
 
-## How to use each function:
+## How to use each function in functions.py:
 
 ```python
 osm_to_features(path, query, file_name)
