@@ -7,7 +7,7 @@ The code in this repository was used to create an ArcGIS regional bike infrastru
 1. [Project background](#project-background)
 2. [Data sources](#data-sources)
 3. [Setup](#setup)
-4. [How to use each function in functions.py](#how-to-use-each-function-in-functions.py:)
+4. [How to use each function in functions.py](#how-to-use-each-function-in-[functions.py](functions.py))
 5. [How to build an Open Street Map Overpass API query](#building-an-open-street-map-overpass-api-query)
 6. [Updating the PANYNJ Regional Bike Map layers](#updating-the-PANYNJ-regional-bike-map)
 <br />
