@@ -216,7 +216,7 @@ The following is the workflow to update the layers on the PANYNJ Regional Bike M
 ```python
 update_web_map(folder_path)
 ```
-  - replace 'folder_path' with the folder to save the updated JSON files into
+  - replace 'folder_path' with your folder path to save the updated JSON files into
 5. Click run to update the bike lanes and Citi Bike stations layers in the desktop ArcGIS Pro
 6. To update the bike lanes layer on the PA Portal, right click on the 'bikelanes_customfields' layer in the Contents pane, then click 'Overwrite Web Layer'
 7. A pop up window of files uploaded on the ArcGIS Online PA Portal will appear - navigate to the 'Bike lanes - Flora' folder and click on the 'Bike lanes' feature layer.
