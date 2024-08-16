@@ -60,7 +60,7 @@ path = r'C:\Users\Flora\folder'
   - An ArcGIS feature class is the source tabular data of a layer which is the feature class's visualization on a map
 <br />
 
-## 1. Create/update an ArcGIS layer of any Open Street Map data. 
+## 1. Create/update an ArcGIS layer of any Open Street Map data
 ```python
 osm_to_features(path, query, file_name)
 ```
@@ -96,7 +96,7 @@ Because of OSM's crowdsourced nature, every feature as a different set of tags. 
   - location: ArcGIS Project geodatabase
 <br />
 
-## 3. Create/update a layer of updating CitiBike dock locations. 
+## 3. Create/update a layer of updating CitiBike station locations
 ```python
 cb_to_features(path)
 ```
