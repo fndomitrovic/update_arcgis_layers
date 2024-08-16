@@ -221,4 +221,10 @@ update_web_map(folder_path)
 6. To update the bike lanes layer on the PA Portal, right click on the 'bikelanes_customfields' layer in the Contents pane, then click 'Overwrite Web Layer'
 7. A pop up window of files uploaded on the ArcGIS Online PA Portal will appear - navigate to the 'Bike lanes - Flora' folder and click on the 'Bike lanes' feature layer.
 8. Click run
-9. To repeat for the Citi Bike docks layer, repeat steps 3-5, but navigate to 'Overwrite Web Layer' from the 'citibike_stations' layer and overwrite the 'CitiBike Docks' ArcGIS Online layer on the PA Portal
+9. Repeat steps 6-8 with the following changes to update the 'Regional bike routes' and 'Citi Bike stations' layers
+    - Regional bike routes:
+      - ArcGIS layer: regional_customfields
+      - PA Portal feature layer: 'Regional bike routes'
+    - Citi Bike stations:
+      - ArcGIS layer: 'citibike_stations'
+      - PA Portal feature layer: 'Citi Bike stations'
