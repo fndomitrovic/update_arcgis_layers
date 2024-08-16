@@ -9,7 +9,7 @@ The code in this repository was used to create an ArcGIS regional bike infrastru
 3. [Setup](#setup)
 4. [How to use each function in functions.py](#how-to-use-each-function-in-functions.py:)
 5. [How to build an Open Street Map Overpass API query](#building-an-open-street-map-overpass-api-query)
-6. [Updating the PANYNJ Regional Bike Map layers](#updating-the-PANYNJ-regional-bike-map-layers)
+6. [Updating the PANYNJ Regional Bike Map layers](#updating-the-PANYNJ-regional-bike-map)
 <br />
 
 ## Project background:
@@ -43,7 +43,7 @@ import arcpy, os, json, requests
 ```
 <br />
 
-## How to use each function in functions.py:
+## How to use each function in [functions.py](functions.py):
 <br />
 
 Notes: 
@@ -177,7 +177,6 @@ out body;
 out skel qt;
 """
 ```
-ChatGPT can be a useful tool to figure out what different features are tagged as. Every OSM feature will also have a list of its tags when selected on the Open Street Map website.
 <br />
 
 #### 3. Geography
@@ -198,17 +197,24 @@ There are several ways to query for location. For this project, the query used a
    - If you know the tags the features you want, this tool can help you build a query
 4. [Taginfo](https://taginfo.openstreetmap.org/)
    - OSM database of the meaning of different keys and key-value pairs
+<br />
 
-## Updating the PANYNJ Regional Bike Map layers
+## Updating the PANYNJ Regional Bike Map
 The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. 
 The following is the workflow to update the layers on the PANYNJ Regional Bike Map Web App:
 
-In a desktop ArcGIS Pro application:
+### In a desktop ArcGIS Pro application:
 1. Log in to the PANYNJ ArcGIS online portal
-   - must log in to an account with editing priveleges for the layer, I used Leo Tsang's account to originally upload and update the layers
+   - must log in to an account with editing priveleges for the layer, Leo Tsang's account was used to originally upload and update the layers
 2. Open an ArcGIS notebook
-3. Copy and paste the code in [update_web_map] into a cell & run
-4. To update the bike lanes layer, right click on the 'bikelanes_customfields' layer in the Contents pane, then click 'Overwrite Web Layer'
-5. A pop up window of files uploaded on the ArcGIS Online PA Portal will appear - navigate to the 'Bike lanes - Flora' folder and click on the 'Bike lanes' feature layer.
-6. Click run
-7. To repeat for the Citi Bike docks layer, repeat steps 3-5, but navigate to 'Overwrite Web Layer' from the 'citibike_stations' layer and overwrite the 'CitiBike Docks' ArcGIS Online layer on the PA Portal
+3. Copy and paste the code in [update_web_map.py](update_web_map.py) into a cell & click run
+4. In a new cell, write the following:
+```python
+update_web_map(folder_path)
+```
+  - replace 'folder_path' with the folder to save the updated JSON files into
+5. Click run to update the bike lanes and Citi Bike stations layers in the desktop ArcGIS Pro
+6. To update the bike lanes layer on the PA Portal, right click on the 'bikelanes_customfields' layer in the Contents pane, then click 'Overwrite Web Layer'
+7. A pop up window of files uploaded on the ArcGIS Online PA Portal will appear - navigate to the 'Bike lanes - Flora' folder and click on the 'Bike lanes' feature layer.
+8. Click run
+9. To repeat for the Citi Bike docks layer, repeat steps 3-5, but navigate to 'Overwrite Web Layer' from the 'citibike_stations' layer and overwrite the 'CitiBike Docks' ArcGIS Online layer on the PA Portal
