@@ -123,7 +123,7 @@ The three data types in Open Street Map are nodes, ways, and relations. Nodes re
 <br />
 
 #### 2. Tag(s)
-OSM features are identified & described by a tag system. Each tag is a key value pair, such as "bicycle=designated", where the key functions like a column name and the value like a cell value. There are more than 3,000 keys alone used on Open Street Map, and you can find their associated information on OSM's Taginfo site.
+OSM features are identified & described by a tag system. Each tag is a key value pair, such as "bicycle=designated", where the key functions like a column name and the value like a cell value. There are more than 3,000 keys alone used on Open Street Map, and you can find their associated information on OSM's Taginfo site. 
 
 
 Some features, such as local bike lanes, can have many identifying tags. For example, below is the query used to retrieve local bike lanes from Trenton, NJ, to Hartford, CT:
@@ -165,7 +165,7 @@ out skel qt;
 ```
 In this query, 26 different tags can retrieve bike lane infrastructure - protected bike lanes, conventional bike lanes, and signed shared bicycle & vehicle lanes.  
   
-In contrast, regional cycle routes can be queried with only one group of tags:
+In contrast, regional cycle routes can be queried with only one line of tags:
 ```python
 regional_routes = """
 [out:json];
@@ -187,7 +187,7 @@ There are several ways to query for location. For this project, the query used a
 #### Helpful resources for building queries:
 1. ChatGPT
    - prompt with "Write an Overpass API query for [features] in [location]'
-   - helps with writing the correct syntax & identifying what features are tagged as in OSM
+   - helps with writing the correct syntax, identifying what features are tagged as in OSM, + using operators for complex queries
 2. [Overpass Turbo](https://overpass-turbo.eu/)
    - Overpass API web interface
    - View build queries & display queried data
@@ -197,13 +197,16 @@ There are several ways to query for location. For this project, the query used a
    - If you know the tags the features you want, this tool can help you build a query
 4. [Taginfo](https://taginfo.openstreetmap.org/)
    - OSM database of the meaning of different keys and key-value pairs
+5. [Overpass QL documentation](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
+   - official documentation for Overpass QL
 <br />
 
 ## Updating the PANYNJ Regional Bike Map
 The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. 
 The following is the workflow to update the layers on the PANYNJ Regional Bike Map Web App:
+<br />
 
-### In a desktop ArcGIS Pro application:
+#### In a desktop ArcGIS Pro application:
 1. Log in to the PANYNJ ArcGIS online portal
    - must log in to an account with editing priveleges for the layer, Leo Tsang's account was used to originally upload and update the layers
 2. Open an ArcGIS notebook
