@@ -1,12 +1,12 @@
 # update_arcgis_layers
 
 Contents:
-1. About
-2. Data sources
-3. Setup
-4. How to use each function
-5. Building an Open Street Map Overpass API query
-6. Updating the PANYNJ Regional Bike Map layers
+1. [About](#about)
+2. [Data sources](#data-sources)
+3. [Setup](#setup)
+4. [How to use each function](#how-to-use-each-function)
+5. [Building an Open Street Map Overpass API query](#building-an-open-street-map-overpass-api-query)
+6. [Updating the PANYNJ Regional Bike Map layers](#updating-the-PANYNJ-regional-bike-map-layers)
 
 ## About:
 The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike dock layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources Sharepoint page.
