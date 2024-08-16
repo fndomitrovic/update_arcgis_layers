@@ -78,7 +78,7 @@ This project used the function to retrieve bike lanes and regional bike routes, 
   - location: ArcGIS Project geodatabase
 <br />
 
-## 2. Creates/updates a new layer of OSM features with custom attributes
+## 2. Create/update a new layer of OSM features with custom attributes
 ```python
 standardize_fields(path, output_name, fields)
 ```
