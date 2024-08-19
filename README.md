@@ -223,7 +223,7 @@ The code in this repository was used to create layers for Open Street Map bike l
   - Desktop layers & matching web layers:
     - Local bike lanes:
       - ArcGIS layer: local_bikelanes
-      - PA Portal feature layer: 'Bike lanes'
+      - PA Portal feature layer: 'Local bike lanes'
     - Regional bike routes:
       - ArcGIS layer: regional_customfields
       - PA Portal feature layer: 'Regional bike routes'
