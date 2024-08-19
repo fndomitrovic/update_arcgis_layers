@@ -1,6 +1,6 @@
 # update_arcgis_layers
 
-The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike station layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources [Sharepoint page](https://panynj.sharepoint.com/sites/PRD/SitePages/Bicycle%20Planning.aspx). This repository documents the functions used to create updating layers of regional bike lane data from Open Street Map and Citi Bike station locations, as well as how to update the PANYNJ Regional Bike Map.       
+The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike station layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources [Sharepoint page](https://panynj.sharepoint.com/sites/PRD/SitePages/Bicycle%20Planning.aspx). This repository documents the functions used to create updating layers of regional bike lane data from Open Street Map and Citi Bike station locations, as well as how to update the PANYNJ Regional Bike Map with a custom ArcGIS tool.       
 <br />
 
 ## Contents:
@@ -202,26 +202,28 @@ There are several ways to query for location. For this project, the query used a
 <br />
 
 ## Updating the PANYNJ Regional Bike Map
-The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. 
-The following is the workflow to update the layers on the PANYNJ Regional Bike Map Web App:
+The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. I created a Python Toolbox out of the earlier functions so that people can update the bike infrastructure layers through the ArcGIS interface as opposed to through a Python notebook. This tool adapts the script into a custom ArcGIS tool, with the same interface as ArcGIS tools such as Spatial Join, Intersect, etc.
 <br />
 <br />
 
-#### In a desktop ArcGIS Pro application:
-1. Log in to the PANYNJ ArcGIS online portal
-   - must log in to an account with editing priveleges for the layer, Leo Tsang's account was used to originally upload and update the layers
-2. Open an ArcGIS notebook
-3. Copy and paste the code in [update_web_map.py](update_web_map.py) into a cell & click run
-4. In a new cell, write the following:
-```python
-update_web_map(folder_path)
-```
-  - replace 'folder_path' with your folder path to save the updated JSON files into
-5. Click run to update the bike lanes and Citi Bike stations layers in the desktop ArcGIS Pro
-6. To update the bike lanes layer on the PA Portal, right click on the 'bikelanes_customfields' layer in the Contents pane, then click 'Overwrite Web Layer'
-7. A pop up window of files uploaded on the ArcGIS Online PA Portal will appear - navigate to the 'Bike lanes - Flora' folder and click on the 'Bike lanes' feature layer.
-8. Click run
-9. Repeat steps 6-8 with the following changes to update the 'Regional bike routes' and 'Citi Bike stations' layers
+#### To use the 'Update Bike Layers' tool & update the PANYNJ Regional Bike Map:
+1. Download [update_web_layers.pyt](update_web_layers.pyt)
+2. Open a desktop ArcGIS Pro project
+3. Open the Catalog Pane (under 'View' tab)
+4. Right click on 'Toolboxes' & click 'Add Toolbox'
+5. Navigate to update_web_layers.pyt and click 'OK'
+6. Double click on the 'Update Bike Layers' tool of the 'update_web_layers.pyt' to open the tool
+7. Select the parameters:
+  - Output folder: folder to save JSON files necessary to update web layers to
+  - Map: map you want to add the layers to
+8. Click 'Run'. The tool will take around 3 minutes to run.
+9. Three layers should appear on the map. To update the PANYNJ Regional Bike Map layers, right click on a layer and click, 'Sharing,' then 'Overwrite Web Layer'
+10. Navigate to the matching web layer (see below) & click run
+  - Click 'OK' on any prior warning message
+  - Desktop layers & matching web layers:
+    - Local bike lanes:
+      - ArcGIS layer: local_bikelanes
+      - PA Portal feature layer: 'Bike lanes'
     - Regional bike routes:
       - ArcGIS layer: regional_customfields
       - PA Portal feature layer: 'Regional bike routes'
