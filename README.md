@@ -216,7 +216,7 @@ The code in this repository was used to create layers for Open Street Map bike l
 7. Select the parameters:
   - Output folder: folder to save JSON files necessary to update web layers to
   - Map: map you want to add the layers to
-8. Click 'Run'. The tool will take around 3 minutes to run.
+8. Click 'Run'. The tool will take around 2 minutes to run.
 9. Three layers should appear on the map. To update the PANYNJ Regional Bike Map layers, right click on a layer and click, 'Sharing,' then 'Overwrite Web Layer'
 10. Navigate to the matching web layer (see below) & click run
   - Click 'OK' on any prior warning message
