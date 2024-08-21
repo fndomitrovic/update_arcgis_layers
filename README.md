@@ -125,7 +125,7 @@ The PANYNJ Regional Bike Map used this function to retrieve bike lanes and regio
 
 #### Input:
 - path = folder path to save Open Street Map JSON data to (string)
-- query = Overpass Query Langauge, one of Open Street Map's API's query languages, query - see [How to build an Overpass API query](#building-an-open-street-map-overpass-api-query) (string)
+- query = Overpass Query Langauge, one of Open Street Map's API's query languages, query - see [Building an Open Street Map Overpass API query](#building-an-open-street-map-overpass-api-query) (string)
 - file_name = name for output JSON file and ArcGIS feature class/layer (string)
 #### Output:
 - JSON file of queried Open Street Map data in GeoJSON format
