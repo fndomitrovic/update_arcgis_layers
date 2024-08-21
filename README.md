@@ -252,7 +252,7 @@ There are several ways to query for location. For this project, the query used a
    - if you know the tags the features you need, this tool can help you build a query
 4. [Taginfo](https://taginfo.openstreetmap.org/)
    - OSM database of the meaning of different keys and key-value pairs
-5. [Open Street Map Wiki Overpass QL documentation](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
+5. Open Street Map Wiki [Overpass QL documentation](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
    - official documentation for OSM Overpass Query Language
 <br />
 
