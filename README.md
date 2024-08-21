@@ -62,7 +62,7 @@ This repository's code was used to create map layers for local bike lanes, regio
 3. Open the Catalog Pane (under 'View' tab)
 4. Right click on 'Toolboxes' & click 'Add Toolbox'
 5. Navigate to & select update_web_layers.pyt and click 'OK'
-6. Double click on the 'Update Bike Layers' tool of the 'update_web_layers.pyt' to open the tool
+6. Expand the update_web_layers.pyt toolbox & double click on 'Update Bike Layers' to open the tool
 7. Set parameters:
    - Output folder: folder to save JSON files necessary to update web layers to
    - Map: map you want to add the layers to
