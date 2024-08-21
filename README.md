@@ -23,7 +23,7 @@ The code in this repository was used to create & update three layers (Local bike
 - no code necessary, can all be done through ArcGIS Pro interface  
 
 [functions.py](functions.py):
-- commented Python file with code of three functions used inside web_layers_.pyt ArcGIS tool which can also be used on their own
+- commented Python file with code of three functions used inside update_web_layers_.pyt ArcGIS tool which can also be used on their own
   - functions utilizing Open Street Map can query for any Open Street Map data, not only the bike data used in this project
 <br />
 
