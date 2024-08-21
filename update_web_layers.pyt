@@ -195,7 +195,7 @@ class Tool(object):
             else:
                 print(f"Request failed with status code {response.status_code}")
 
-        def symbolize(active_map):
+        def symbolize_lanes(active_map):
             
             # Add & calculate NYCDOT bike lane class fields
             expression = 'calculate_code(!highway!,!cycleway!,!cycleway_left!,!cycleway_right!,!cycleway_both!,!bicycle!,!name!)'
@@ -258,13 +258,6 @@ def calculate_desc(code):
                         item.symbol.color = {'RGB':[0,147,83,100]}
             bikelane_lyr.symbology = bikelane_sym
 
-            # Symbolize Citi Bike stations
-            lyr = active_map.listLayers('citibike_stations')[0]
-            sym = lyr.symbology
-            sym.renderer.symbol.color = {'RGB':[173,216,230,100]}
-            sym.renderer.symbol.size = 4
-            lyr.symbology = sym
-
             # Symbolize regional routes
             r_lyr = active_map.listLayers('regional_routes')[0]
             r_sym = r_lyr.symbology
@@ -272,6 +265,14 @@ def calculate_desc(code):
             r_sym.renderer.symbol.size = 0.5
             r_sym.renderer.symbol.color = {'RGB':[0,30,0,100]}
             r_lyr.symbology = r_sym
+
+        def symbolize_cb(active_map):
+            # Symbolize Citi Bike stations
+            lyr = active_map.listLayers('citibike_stations')[0]
+            sym = lyr.symbology
+            sym.renderer.symbol.color = {'RGB':[173,216,230,100]}
+            sym.renderer.symbol.size = 4
+            lyr.symbology = sym
 
         bikelanes_query = '''
         [out:json];
@@ -327,9 +328,10 @@ def calculate_desc(code):
         fields = ['cycleway','cycleway:left','cycleway:right','cycleway:both','highway','name','lanes','bicycle','footway']
         custom_osm_fields(os.path.join(folder_path,'bikelanes_defaultfields.json'),fields,'local_bikelanes')
         active_map.addDataFromPath(arcpy.Describe('local_bikelanes').catalogPath)
+        symbolize_lanes(active_map)
+
         cb_to_features(folder_path)
         active_map.addDataFromPath(arcpy.Describe('citibike_stations').catalogPath)
-
-        symbolize(active_map)
+        symbolize_cb(active_map)
         
         return
