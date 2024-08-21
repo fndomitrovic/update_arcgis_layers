@@ -1,19 +1,11 @@
 # update_arcgis_layers
 
-The code in this repository was used to create an ArcGIS regional bike infrastructure map that could be easily updated with the latest data. This code makes up the updating bike lane and Citi Bike station layers on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) on the PA Planning & Regional Development Bicycle Planning & Resources [Sharepoint page](https://panynj.sharepoint.com/sites/PRD/SitePages/Bicycle%20Planning.aspx). This repository documents the functions used to create updating layers of regional bike lane data from Open Street Map and Citi Bike station locations, as well as how to update the PANYNJ Regional Bike Map with a custom ArcGIS tool.       
+The code in this repository was used to create & update three layers ('Local bike lanes,' 'Regional bike routes,' & 'Citi Bike stations') on the [PANYNJ Regional Bike Map](https://geoapps.gis.panynj.gov/portal/apps/webappviewer/index.html?id=7f496ee5f7d940e39ed4cd6af2b7435b) available on the PA Planning & Regional Development [Sharepoint](https://panynj.sharepoint.com/sites/PRD/SitePages/Bicycle%20Planning.aspx) page. This repository documents how to update these PANYNJ Regional Bike Map layers with the latest data & the code behind this process.
 <br />
-
-## Repository Files:
-[update_web_layers.pyt](update_web_layers.pyt):
-- ArcGIS Python toolbox file that can be uploaded to a desktop ArcGIS Project to create or update the layers on the PANYNJ Regional Bike Map
-- No code necessary, can all be done through ArcGIS Pro interface  
-
-[functions.py](functions.py):
-- code of three Python functions used inside web_layers_.pyt ArcGIS tool which can also be used on their own
-  - OSM functions can query for any data, not only the bike data used in this project
 <br />
 
 ## Contents:
+1. [Repository files](#repository-files)
 1. [Project background](#project-background)
 2. [Data sources](#data-sources)
 3. [Using update_web_layers.pyt & updating the PANYNJ Regional Bike Map](Using-update_web_layers.pyt-&-updating-the-PANYNJ-Regional-Bike-Map)
@@ -21,6 +13,17 @@ The code in this repository was used to create an ArcGIS regional bike infrastru
      a. [Setup](#setup)     
      b. [Using each functions.py function](#Using-each-functions.py-function)     
      c. [Building an Open Street Map Overpass API query](#Building-an-Open-Street-Map-Overpass-API-query)
+<br />
+
+## Repository files:
+[update_web_layers.pyt](update_web_layers.pyt):
+- ArcGIS Python toolbox file - code used to create & update PANYNJ Regional Bike Map layers adapted into an ArcGIS tool
+- file can be uploaded to a desktop ArcGIS Pro project to create or update the 'Local Bike lanes,' 'Regional bike routes,' & 'Citi Bike stations' layers on the PANYNJ Regional Bike Map
+- No code necessary, can all be done through ArcGIS Pro interface  
+
+[functions.py](functions.py):
+- commented Python file with code of three functions used inside web_layers_.pyt ArcGIS tool which can also be used on their own
+  - functions utilizing Open Street Map can query for any Open Street Map data, not only the bike data used in this project
 <br />
 
 ## Project background:
@@ -48,7 +51,7 @@ You can browse OSM data on its website, and query and download OSM data through 
 
 ## Using update_web_layers.pyt & updating the PANYNJ Regional Bike Map
 
-The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. I created a Python Toolbox out of the earlier functions so that people can update the bike infrastructure layers through the ArcGIS interface as opposed to through a Python notebook. This tool adapts the script into a custom ArcGIS tool, with the same interface as ArcGIS tools such as Spatial Join, Intersect, etc.
+The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. The update_web_layers.pyt Python toolbox creates (or updates if running more than once) the 'Local bike lanes,' 'Regional bike routes,' & 'Citi Bike stations' layers seen on the PANYNJ Regional Bike Map in a desktop ArcGIS Pro project. You can then use these layers to update their associated web layer on the PANYNJ Regional Bike Map or use them for another purpose.
 <br />
 <br />
 
@@ -63,8 +66,11 @@ The code in this repository was used to create layers for Open Street Map bike l
   - Output folder: folder to save JSON files necessary to update web layers to
   - Map: map you want to add the layers to
 8. Click 'Run'. The tool will take around 2 minutes to run.
-9. Three layers should appear on the map. To update the PANYNJ Regional Bike Map layers, right click on a layer and click, 'Sharing,' then 'Overwrite Web Layer'
-10. Navigate to the matching web layer (see below) & click run
+9. Three layers should appear on the map
+
+### Next steps to update the PANYNJ Regional Bike Map
+10. Right click on a layer and click, 'Sharing,' then 'Overwrite Web Layer'
+11. Navigate to the matching web layer (see below) & click run
   - Click 'OK' on any prior warning message
   - Desktop layers & matching web layers:
     - Local bike lanes:
