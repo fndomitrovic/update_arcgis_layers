@@ -88,7 +88,8 @@ This repository's code was used to create map layers for local bike lanes, regio
       - PA Portal feature layer: 'Citi Bike stations'
 <br />
 
-## Functions.py documentation
+## Functions.py documentation     
+
 
 ## a. Setup
 This code was run in an ArcGIS notebook inside of a desktop ArcGIS Pro application. You can create an ArcGIS notebook by clicking on the Insert tab in an ArcGIS Project, then clicking "New Notebook."
@@ -111,8 +112,8 @@ Write an 'r' first to make it a raw string - sometimes paths are not recognized 
 ```python
 path = r'C:\Users\Flora\folder'
 ```
-- All three functions will create new files & ArcGIS feature classes/layers or update the file/feature class/layer if it already exists
-  - An ArcGIS feature class is the source tabular data of a layer which is the feature class's visualization on a map
+- Each function will create new JSON files & ArcGIS feature classes/layers or update the file/feature class/layer if it already exists
+  - An ArcGIS feature class is the tabular source data of a layer which is the feature class's visualization on a map
 <br />
 
 ### 1. Create/update an ArcGIS layer of any Open Street Map data
@@ -120,7 +121,7 @@ path = r'C:\Users\Flora\folder'
 osm_to_features(path, query, file_name)
 ```
 
-This project used the function to retrieve bike lanes and regional bike routes, but by changing the query this function can retrieve any data from Open Street Map.
+The PANYNJ Regional Bike Map used this function to retrieve bike lanes and regional bike routes, but by changing the query this function can retrieve any data from Open Street Map.
 
 #### Input:
 - path = folder path to save Open Street Map JSON data to (string)
@@ -130,14 +131,14 @@ This project used the function to retrieve bike lanes and regional bike routes, 
 - JSON file of queried Open Street Map data in GeoJSON format
   - location: input folder path
 - ArcGIS feature class & layer of Open Street Map data
-  - location: ArcGIS Project geodatabase
+  - location: ArcGIS project geodatabase
 <br />
 
 ### 2. Create/update a new layer of OSM features with custom attributes
 ```python
 standardize_fields(path, output_name, fields)
 ```
-Because of OSM's crowdsourced nature, every feature as a different set of tags. When creating an ArcGIS layer from OSM data, in order to create a uniform attribute table, ArcGIS gives every feature the keys as the first feature in the OSM dataset. If a feature doesn't have a given key, its value is null in the attribute table. Because of this, many tags are lost in the dataset, if the key does not appear in the first feature. This function allows a user to provide a list of keys to be included in the a new layer's attribute table. This step was necessary for this project in order to symbolize bike lanes by their tags.
+Because of OSM's crowdsourced nature, every feature as a different set of tags (attributes). When creating an ArcGIS layer from OSM data, in order to create a uniform attribute table, ArcGIS gives every feature the same keys (fields) as the first feature in the OSM dataset. If a feature doesn't have a given key, its value is null in the attribute table. Because of this, many tags are lost in the dataset, if the key does not appear in the first feature. This function allows a user to provide a list of keys to be included in the a new layer's attribute table. This step was necessary for this project in order to symbolize bike lanes by their tags. For more information on OSM's tag system, see [Building an Open Street Map Overpass API Query](#Building-an-Open-Street-Map-Overpass-API-query).
 
 #### Input:
 - path = path to JSON file created by osm_to_features() function (string)
@@ -148,7 +149,7 @@ Because of OSM's crowdsourced nature, every feature as a different set of tags. 
 - JSON file of OSM data with standardized tags
   - location: input path folder
 - ArcGIS feature class & layer of input OSM data with input keys as the fields in the layer attribute table
-  - location: ArcGIS Project geodatabase
+  - location: ArcGIS project geodatabase
 <br />
 
 ### 3. Create/update a layer of updating CitiBike station locations
@@ -158,10 +159,10 @@ cb_to_features(path)
 #### Input: 
 - path = folder path to save CitiBike JSON data to (string)
 #### Output: 
-- JSON file of most recent CitiBike docks in GeoJSON format
+- JSON file of most recent CitiBike stations in GeoJSON format
   - location: input folder path
 - ArcGIS feature class & layer of most recent CitiBike docks
-  - location: ArcGIS Project geodatabase
+  - location: ArcGIS project geodatabase
 <br />
 
 ## c. Building an Open Street Map Overpass API query
@@ -177,7 +178,7 @@ The three data types in Open Street Map are nodes, ways, and relations. Nodes re
 <br />
 
 ### 2. Tag(s)
-OSM features are identified & described by a tag system. Each tag is a key value pair, such as "bicycle=designated", where the key functions like a column name and the value like a cell value. There are more than 3,000 keys alone used on Open Street Map, and you can find their associated information on OSM's Taginfo site. 
+OSM features are identified & described by a tag system. Each tag is a key value pair, such as "bicycle=designated", where the key functions like a column name and the value like a cell value. There are more than 3,000 keys alone used on Open Street Map, and you can find their associated information on OSM's [Taginfo](https://taginfo.openstreetmap.org/) site. 
 
 
 Some features, such as local bike lanes, can have many identifying tags. For example, below is the query used to retrieve local bike lanes from Trenton, NJ, to Hartford, CT:
@@ -234,30 +235,30 @@ out skel qt;
 <br />
 
 ### 3. Geography
-There are several ways to query for location. For this project, the query used a bounding box with four coordinates of the corners of the bounding box. It's also possible to query by location name.
+There are several ways to query for location. For this project, the query used a bounding box with four coordinates of the corners of the bounding box, but it is also possible to query by location name.
 <br />
 <br />
 
 ### Helpful resources for building queries:
 1. ChatGPT
    - prompt with "Write an Overpass API query for [features] in [location]'
-   - helps with writing the correct syntax, identifying what features are tagged as in OSM, + using operators for complex queries
+   - helps with writing the correct syntax, identifying what features are tagged as in OSM, & using operators for complex queries
 2. [Overpass Turbo](https://overpass-turbo.eu/)
    - Overpass API web interface
-   - View build queries & display queried data
-   - View JSON data of query before it is manipulated by Python scripts
+   - build queries & display queried data
+   - view JSON data of query before it is manipulated by Python scripts
 3. Overpass Turbo Wizard
-   - On Overpass Turbo website
-   - If you know the tags the features you want, this tool can help you build a query
+   - on Overpass Turbo website
+   - if you know the tags the features you need, this tool can help you build a query
 4. [Taginfo](https://taginfo.openstreetmap.org/)
    - OSM database of the meaning of different keys and key-value pairs
 5. [Overpass QL documentation](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
-   - official documentation for Overpass QL
+   - official documentation for OSM Overpass Query Language
 <br />
 
 ## Potential errors & limitations
-The main error when running these tools & functions is the code having trouble connecting with the API.   
-1. Trouble connecting with OSM's Overpass API returns the following error message. Typically opening [Overpass Turbo]() on a web browser and running again while resolve this issue.
+The main error when running these tools & functions is the script having trouble connecting with the API.   
+1. Trouble connecting with OSM's Overpass API returns the following error message. Typically opening [Overpass Turbo]() on a web browser and running again resolves this issue.
 ```python
 'Request failed with status code 407'
 ```
