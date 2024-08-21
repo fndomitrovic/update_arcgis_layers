@@ -263,6 +263,6 @@ The main error when running these tools & functions is the code having trouble c
   
 2. Trouble connecting with Citi Bike's API returns the following error message. For this error I have not yet found a workaround besides trying to run the tool/function at a different time. When running the Update Bike Layers tool, the output 'regional_routes' & 'local_bikelanes' will still be created without error even if the tool returns a 'Update Bike Layers failed' message when the 'citibike_stations' layer cannot be created.
 ```python
-'Max retries exceeded with url: /gbfs/2.3/bkn/en/station_information.json'
+SSLError: HTTPSConnectionPool(host='gbfs.lyft.com', port=443): Max retries exceeded with url: /gbfs/2.3/bkn/en/station_information.json (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
 ```
 
