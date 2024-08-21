@@ -67,7 +67,7 @@ This repository's code was used to create map layers for local bike lanes, regio
    - Map: map you want to add the layers to
 8. Click 'Run'. The tool will take around 2 minutes to run.
 9. Three layers should appear on the map: 'regional_routes,' 'local_bikelanes,' & 'citibike_stations'
-     - if only 'citibike_stations' does not appear & there is an 'Update Bike Layers failed' message, see [Potential Errors & Limitations](#Potential-errors-&-limitations)
+     - if only 'citibike_stations' does not appear & there is an 'Update Bike Layers failed' message, see [Potential errors & limitations](#Potential-errors-&-limitations)
 <br />
 
 ### Next steps to update the PANYNJ Regional Bike Map
