@@ -13,6 +13,7 @@ The code in this repository was used to create & update three layers ('Local bik
      a. [Setup](#setup)     
      b. [Using each functions.py function](#Using-each-functions.py-function)     
      c. [Building an Open Street Map Overpass API query](#Building-an-Open-Street-Map-Overpass-API-query)
+5. [Potential errors & limitations](#Potential-errors-&-limitations)
 <br />
 
 ## Repository files:
@@ -47,12 +48,10 @@ You can browse OSM data on its website, and query and download OSM data through 
 ### 2. Citi Bike System Data: Citi Bike docks
 [Citi Bike](https://citibikenyc.com/system-data) publishes updating, real-time datasets including station locations and bike availability. This data can also be accessed through an API endpoint. However, no query is necessary as there are separate API endpoints specifically for dock locations, bike avilability, etc. 
 <br />
-<br />
 
 ## Using update_web_layers.pyt & updating the PANYNJ Regional Bike Map
 
 The code in this repository was used to create layers for Open Street Map bike lanes and Citi Bike docks that can be updated with the latest data each time the script is run in a desktop ArcGIS Pro application. The layers created from this script were then uploaded to the PA Portal ArcGIS Online and integrated into the PANYNJ Regional Bike Map ArcGIS Web App. However, the layers on this Web App are not automatically updated each time the script in the Desktop ArcGIS Pro is run. The update_web_layers.pyt Python toolbox creates (or updates if running more than once) the 'Local bike lanes,' 'Regional bike routes,' & 'Citi Bike stations' layers seen on the PANYNJ Regional Bike Map in a desktop ArcGIS Pro project. You can then use these layers to update their associated web layer on the PANYNJ Regional Bike Map or use them for another purpose.
-<br />
 <br />
 
 ### To use the 'Update Bike Layers' tool & update the PANYNJ Regional Bike Map:
@@ -66,11 +65,15 @@ The code in this repository was used to create layers for Open Street Map bike l
   - Output folder: folder to save JSON files necessary to update web layers to
   - Map: map you want to add the layers to
 8. Click 'Run'. The tool will take around 2 minutes to run.
-9. Three layers should appear on the map
+9. Three layers should appear on the map: 'regional_routes,' 'local_bikelanes,' & 'citibike_stations'
+     - if only 'citibike_stations' does not appear & there is an 'Update Bike Layers failed' message, see [Potential Errors & Limitations](#potential-errors-&-limitations)
+<br />
 
 ### Next steps to update the PANYNJ Regional Bike Map
-10. Right click on a layer and click, 'Sharing,' then 'Overwrite Web Layer'
-11. Navigate to the matching web layer (see below) & click run
+10. In the upper right corner, log in to the PA ArcGIS Online Portal
+    - needs to be an account with editing privelges for the layers on the PANYNJ Regional Bike Map - likely only on Leo Tsang's account under which the layers were originally uploaded
+12. Right click on a layer and click, 'Sharing,' then 'Overwrite Web Layer'
+13. Navigate to the matching web layer (see below) & click run
   - Click 'OK' on any prior warning message
   - Desktop layers & matching web layers:
     - Local bike lanes:
@@ -82,6 +85,7 @@ The code in this repository was used to create layers for Open Street Map bike l
     - Citi Bike stations:
       - ArcGIS layer: 'citibike_stations'
       - PA Portal feature layer: 'Citi Bike stations'
+<br />
 
 ## Functions.py documentation
 
@@ -249,3 +253,16 @@ There are several ways to query for location. For this project, the query used a
 5. [Overpass QL documentation](https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
    - official documentation for Overpass QL
 <br />
+
+## Potential errors & limitations
+The main error when running these tools & functions is the code having trouble connecting with the API.   
+1. Trouble connecting with OSM's Overpass API returns the following error message. Typically opening [Overpass Turbo]() on a web browser and running again while resolve this issue.
+```python
+'Request failed with status code 407'
+```
+  
+2. Trouble connecting with Citi Bike's API returns the following error message. For this error I have not yet found a workaround besides trying to run the tool/function at a different time. When running the Update Bike Layers tool, the output 'regional_routes' & 'local_bikelanes' will still be created without error even if the tool returns a 'Update Bike Layers failed' message when the 'citibike_stations' layer cannot be created.
+```python
+'Max retries exceeded with url: /gbfs/2.3/bkn/en/station_information.json'
+```
+
