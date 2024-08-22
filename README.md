@@ -90,7 +90,7 @@ This repository's code was used to create map layers for local bike lanes, regio
 <br />
 
 ## Functions.py documentation     
-The preceding ArcGIS Python toolbox was can be used to create three bike infrastructure layers which can optionally be used to update the PANYNJ Regional Bike Map. The following Python functions, available in [functions.py](functions.py) were used (slightly modified) in [update_web_layers.pyt](update_web_layers.pyt) but can also be run on their own. This section documents each function in [functions.py](functions.py) & how the Open Street Map functions can retrieve all types of OSM data (not only bike data).
+The preceding ArcGIS Python toolbox creates three bike infrastructure layers which can optionally be used to update the PANYNJ Regional Bike Map. The following Python functions, available in [functions.py](functions.py) were used (slightly modified) in [update_web_layers.pyt](update_web_layers.pyt) but can also be run on their own. This section documents each function in [functions.py](functions.py) & how the Open Street Map functions can retrieve all types of OSM data (not only bike data).
 
 ## a. Setup
 This code was run in an ArcGIS notebook inside of a desktop ArcGIS Pro application. You can create an ArcGIS notebook by clicking on the Insert tab in an ArcGIS Project, then clicking "New Notebook."
