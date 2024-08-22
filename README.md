@@ -18,7 +18,7 @@ The code in this repository was used to create & update three layers (Local bike
 
 ## Repository files:
 [update_web_layers.pyt](update_web_layers.pyt):
-- ArcGIS Python toolbox file - Python code used to create & update PANYNJ Regional Bike Map layers adapted into an ArcGIS tool
+- ArcGIS [Python toolbox](https://pro.arcgis.com/en/pro-app/latest/arcpy/geoprocessing_and_python/a-quick-tour-of-python-toolboxes.htm) file - Python code used to create & update PANYNJ Regional Bike Map layers adapted into an ArcGIS geoprocessing tool
 - .pyt file can be uploaded to a desktop ArcGIS Pro project to create or update the 'Local Bike lanes,' 'Regional bike routes,' & 'Citi Bike stations' layers on the PANYNJ Regional Bike Map
 - no code necessary to use, can all be done through ArcGIS Pro interface  
 
